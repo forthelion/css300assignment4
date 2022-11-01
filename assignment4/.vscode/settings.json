@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "xutility": "cpp",
+        "xmemory": "cpp",
+        "iosfwd": "cpp"
+    }
+}
