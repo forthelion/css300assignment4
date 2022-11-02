@@ -33,7 +33,9 @@ template <class T> class DoublyLinkedList {
     void init();
 
     // returns true if the list is empty, false otherwise
-    bool isEmpty();
+    bool isEmpty() {
+        return length == 0;
+    }
 
     // returns the number of items in the list
     int getLength();
