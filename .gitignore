@@ -34,3 +34,5 @@
 
 # Valgrind
 vgcore.*
+
+test_cassidy.cpp
