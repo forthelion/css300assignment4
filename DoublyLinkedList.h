@@ -38,7 +38,9 @@ template <class T> class DoublyLinkedList {
     }
 
     // returns the number of items in the list
-    int getLength();
+    int getLength() {
+        return length;
+    }
 
     // inserts a new item to the beginning of the list
     void insertFirst(const T &);
