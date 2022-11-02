@@ -39,12 +39,12 @@ template <class T> class DoublyLinkedList {
     }
 
     // returns true if the list is empty, false otherwise
-    bool isEmpty() {
+    bool isEmpty() const {
         return length == 0;
     }
 
     // returns the number of items in the list
-    int getLength() {
+    int getLength() const {
         return length;
     }
 
