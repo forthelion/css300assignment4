@@ -18,7 +18,9 @@ template <class T> class DoublyLinkedList {
     // CASSIDY
 
     // default no-argument constructor
-    DoublyLinkedList();
+    DoublyLinkedList() {
+        init();
+    }
 
     // destructor
     ~DoublyLinkedList();
@@ -30,7 +32,11 @@ template <class T> class DoublyLinkedList {
     DoublyLinkedList operator=(const DoublyLinkedList<T> &);
 
     // initializes an empty list
-    void init();
+    void init() {
+        first = nullptr;
+        last = nullptr;
+        length = 0;
+    }
 
     // returns true if the list is empty, false otherwise
     bool isEmpty() {
