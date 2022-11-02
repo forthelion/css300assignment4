@@ -1,36 +1,32 @@
-#include "DoublyLinkedList.h"
 #include "BigInteger.h"
-#include <iostream>
+#include "DoublyLinkedList.h"
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
 int score = 0;
 
-void grade(bool condition, int points)
-{
-    if (condition)
-    {
+void grade(bool condition, int points) {
+    if (condition) {
         cout << "Pass" << endl;
         score += points;
-    }
-    else
-    {
+    } else {
         cout << "Fail" << endl;
     }
 }
 
-void dllTest(){
+void dllTest() {
     DoublyLinkedList<int> list;
     grade(list.isEmpty() == true, 1);
-    for(int i=0; i<10; i++){
+    for (int i = 0; i < 10; i++) {
         list.insertFirst(i);
     }
     grade(list.getLength() == 10, 2);
 
     list.setIteratorFirst();
     grade(list.hasNext() == false, 2);
-    
+
     grade(list.getData() == 9, 1);
 
     list.next();
@@ -62,11 +58,9 @@ void dllTest(){
 
     list.clear();
     grade(list.getLength() == 0, 1);
-
-
 }
 
-void bigIntegerTest(){
+void bigIntegerTest() {
     BigInteger int1("19"), int2("300");
     BigInteger actual2 = int1 - int2;
     BigInteger expected2("-281");
@@ -77,11 +71,11 @@ void bigIntegerTest(){
     grade(bigInt1.getLength() == 23, 2);
 
     BigInteger bigInt2, bigInt3;
-    ifstream file;// cant figure out the error 
+    ifstream file; // cant figure out the error
     file.open("test.txt");
-    file>>bigInt2>>bigInt3;
+    file >> bigInt2 >> bigInt3;
     grade(bigInt2.getLength() == 23, 2);
-    grade(bigInt3.getLength()==24, 2);
+    grade(bigInt3.getLength() == 24, 2);
 
     BigInteger actual1 = bigInt2 + bigInt3;
     BigInteger expected1("234657681223242153555775");
@@ -95,21 +89,19 @@ void bigIntegerTest(){
     BigInteger expected4("-123546567889908777777777");
     grade(actual4 == expected4, 2);
 
-    grade(bigInt2<bigInt3 == true, 1);
+    grade(bigInt2 < bigInt3 == true, 1);
 
-    grade(bigInt3>=bigInt2 == true, 1);
+    grade(bigInt3 >= bigInt2 == true, 1);
 
-    BigInteger bigInt4("12345678997654321"),bigInt5("12345678997654321");
-    grade((bigInt4<=bigInt5 == true), 1);
-
-
+    BigInteger bigInt4("12345678997654321"), bigInt5("12345678997654321");
+    grade((bigInt4 <= bigInt5 == true), 1);
 }
-int main(){
-    dllTest();          //test cases for doubly linked list implementation
+int main() {
+    dllTest(); // test cases for doubly linked list implementation
 
-    bigIntegerTest();   //test cases for big integer implementation
+    bigIntegerTest(); // test cases for big integer implementation
 
-    cout<<"Test Score:"<<score<<endl;
+    cout << "Test Score:" << score << endl;
 
     return 0;
 }
