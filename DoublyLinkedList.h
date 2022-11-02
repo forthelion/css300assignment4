@@ -43,7 +43,28 @@ template <class T> class DoublyLinkedList {
     }
 
     // inserts a new item to the beginning of the list
-    void insertFirst(const T &);
+    void insertFirst(const T &item) {
+        Node<T> *newNode = new Node<T>;
+        newNode->data = item;
+
+        if (!isEmpty()) {
+            first->prev = newNode;
+            newNode->next = first;
+
+            newNode->prev = nullptr;
+
+            // New first node is the one just created
+            first = newNode;
+        } else { // List is empty
+            newNode->next = nullptr;
+            newNode->prev = nullptr;
+
+            first = newNode;
+            last = newNode;
+        }
+
+        length++;
+    }
 
     // inserts a new item at the end of the list
     void insertLast(const T &);
