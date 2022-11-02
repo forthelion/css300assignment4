@@ -15,6 +15,8 @@ template <class T> class DoublyLinkedList {
     int length;        // number of items in the linked list
 
   public:
+    // CASSIDY
+
     // default no-argument constructor
     DoublyLinkedList();
 
@@ -44,6 +46,8 @@ template <class T> class DoublyLinkedList {
 
     // deletes the first item from the list
     void deleteFirst();
+
+    // IGOR
 
     // deletes the last item in the list
     void deleteLast();
