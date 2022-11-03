@@ -23,7 +23,15 @@ template <class T> class DoublyLinkedList {
     }
 
     // destructor
-    ~DoublyLinkedList();
+    ~DoublyLinkedList() {
+        while (first->next != nullptr) {
+            Node<T> *victim = first;
+            first = first->next;
+            delete victim;
+        }
+
+        delete first;
+    }
 
     // copy constructor
     DoublyLinkedList(const DoublyLinkedList<T> &);
