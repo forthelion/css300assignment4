@@ -135,10 +135,14 @@ template <class T> class DoublyLinkedList {
 
     // iterator functions
     // sets the iterator to the beginning of the linked list
-    void setIteratorFirst();
+    void setIteratorFirst(){
+        iterator = first; 
+    }
 
     // sets the iterator to the beginning of the linked list
-    void setIteratorLast();
+    void setIteratorLast(){
+        iterator = last;
+    }
 
     // checks if the iterator has next
     bool hasNext();
@@ -153,7 +157,10 @@ template <class T> class DoublyLinkedList {
     void prev();
 
     // returns true if the iterator is null
-    bool isIteratorNULL();
+    bool isIteratorNULL(){
+      return iterator == nullptr;
+    } 
+    
 
     // gets the data the iterator pointing at
     T getData();
