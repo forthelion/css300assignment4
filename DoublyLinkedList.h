@@ -38,6 +38,8 @@ template <class T> class DoublyLinkedList {
 
     // copy constructor
     DoublyLinkedList(const DoublyLinkedList<T> &other) {
+        init();
+
         Node<T> *cur = other.first;
         while (cur != nullptr) {
             insertLast(cur->data);
