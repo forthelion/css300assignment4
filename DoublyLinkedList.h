@@ -24,13 +24,7 @@ template <class T> class DoublyLinkedList {
 
     // destructor
     ~DoublyLinkedList() {
-        while (first->next != nullptr) {
-            Node<T> *victim = first;
-            first = first->next;
-            delete victim;
-        }
-
-        delete first;
+        clear();
     }
 
     // copy constructor
@@ -112,7 +106,15 @@ template <class T> class DoublyLinkedList {
     void deleteLast();
 
     // destroys the list and makes it empty
-    void clear();
+    void clear() {
+        while (first->next != nullptr) {
+            Node<T> *victim = first;
+            first = first->next;
+            delete victim;
+        }
+
+        delete first;
+    }
 
     // iterator functions
     // sets the iterator to the beginning of the linked list
