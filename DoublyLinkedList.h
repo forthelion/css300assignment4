@@ -48,7 +48,18 @@ template <class T> class DoublyLinkedList {
     }
 
     // copy assignment operator
-    DoublyLinkedList operator=(const DoublyLinkedList<T> &);
+    DoublyLinkedList operator=(const DoublyLinkedList<T> &other) {
+        clear();
+        init();
+
+        Node<T> *cur = other.first;
+        while (cur != nullptr) {
+            insertLast(cur->data);
+            cur = cur->next;
+        }
+
+        return *this;
+    }
 
     // initializes an empty list
     void init() {
@@ -124,13 +135,12 @@ template <class T> class DoublyLinkedList {
 
     // destroys the list and makes it empty
     void clear() {
-        while (first->next != nullptr) {
-            Node<T> *victim = first;
+        Node<T> *victim;
+        while (first != nullptr) {
+            victim = first;
             first = first->next;
             delete victim;
         }
-
-        delete first;
     }
 
     // iterator functions
