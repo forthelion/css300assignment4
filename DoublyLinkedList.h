@@ -48,7 +48,18 @@ template <class T> class DoublyLinkedList {
     }
 
     // copy assignment operator
-    DoublyLinkedList operator=(const DoublyLinkedList<T> &);
+    DoublyLinkedList operator=(const DoublyLinkedList<T> &other) {
+        clear();
+        init();
+
+        Node<T> *cur = other.first;
+        while (cur != nullptr) {
+            insertLast(cur->data);
+            cur = cur->next;
+        }
+
+        return *this;
+    }
 
     // initializes an empty list
     void init() {
