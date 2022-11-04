@@ -124,8 +124,9 @@ template <class T> class DoublyLinkedList {
 
     // destroys the list and makes it empty
     void clear() {
+        Node<T> *victim;
         while (first != nullptr) {
-            Node<T> *victim = first;
+            victim = first;
             first = first->next;
             delete victim;
         }
