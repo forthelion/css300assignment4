@@ -25,7 +25,7 @@ void dllTest() {
     grade(list.getLength() == 10, 2);
 
     list.setIteratorFirst();
-    grade(list.hasNext() == false, 2);
+    grade(list.hasPrev() == false, 2);
 
     grade(list.getData() == 9, 1);
 
@@ -34,9 +34,8 @@ void dllTest() {
 
     list.prev();
     grade(list.getData() == 9, 2);
-
     list.setIteratorLast();
-    grade(list.hasNext() == true, 2);
+    grade(list.hasNext() == false, 2);
 
     grade(list.getData() == 0, 1);
 
@@ -71,7 +70,7 @@ void bigIntegerTest() {
     grade(bigInt1.getLength() == 23, 2);
 
     BigInteger bigInt2, bigInt3;
-    ifstream file; // cant figure out the error
+    ifstream file;
     file.open("test.txt");
     file >> bigInt2 >> bigInt3;
     grade(bigInt2.getLength() == 23, 2);
@@ -80,7 +79,6 @@ void bigIntegerTest() {
     BigInteger actual1 = bigInt2 + bigInt3;
     BigInteger expected1("234657681223242153555775");
     grade(actual1 == expected1, 2);
-
     BigInteger actual3 = bigInt2 - bigInt2;
     BigInteger expected3("0");
     grade(actual3 == expected3, 2);
@@ -96,7 +94,9 @@ void bigIntegerTest() {
     BigInteger bigInt4("12345678997654321"), bigInt5("12345678997654321");
     grade((bigInt4 <= bigInt5 == true), 1);
 }
+
 int main() {
+
     dllTest(); // test cases for doubly linked list implementation
 
     bigIntegerTest(); // test cases for big integer implementation
