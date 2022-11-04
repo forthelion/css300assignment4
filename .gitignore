@@ -38,4 +38,4 @@ vgcore.*
 # Visual Studio Code
 *.pdb
 
-test_cassidy.cpp
+cassidy.cpp
