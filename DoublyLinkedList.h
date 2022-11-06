@@ -155,24 +155,35 @@ template <class T> class DoublyLinkedList {
     }
 
     // checks if the iterator has next
-    bool hasNext();
-
-    // checks if the iterator has prev
-    bool hasPrev();
-
-    // sets the iterator to the next node
-    void next();
-
-    // sets the iterator to the previous node
-    void prev();
-
-    // returns true if the iterator is null
-    bool isIteratorNULL() {
-        return iterator == nullptr;
+    bool hasNext(){
+        return !isIteratorNULL() && iterator->next != nullptr;
     }
 
-    // gets the data the iterator is pointing at
-    T getData();
+    // checks if the iterator has prev
+    bool hasPrev(){
+        return !isIteratorNULL() && iterator->prev != nullptr;
+    }
+
+    // sets the iterator to the next node
+    void next(){
+        iterator = iterator->next;
+    }
+
+    // sets the iterator to the previous node
+    void prev(){
+        iterator = iterator->prev;
+    }
+
+    // returns true if the iterator is null
+    bool isIteratorNULL(){
+        return iterator == nullptr;
+    } 
+    
+
+    // gets the data the iterator pointing at
+    T getData(){
+        return iterator->data; 
+    }
 
     // friend functions
     // overloading operator<<
