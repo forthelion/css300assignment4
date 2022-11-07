@@ -3,9 +3,6 @@
 
 #include "DoublyLinkedList.h"
 #include "Node.h"
-#include <iostream>
-#include <string>
-using namespace std;
 
 class IllegalArgumentException : public exception {
   public:
