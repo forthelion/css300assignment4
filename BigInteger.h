@@ -23,18 +23,16 @@ class BigInteger {
 
   public:
     // might change in future
-    BigInteger() : BigInteger("0"){};
-    BigInteger(char digits[]);
-    BigInteger operator-(const BigInteger &other);
-    // yet to be tested
-    bool operator==(BigInteger &other);
-    // copy assignment operator
-    BigInteger operator=(const BigInteger &other);
-    BigInteger operator+(BigInteger &other);
-    bool operator>=(BigInteger &other);
-    bool operator<=(BigInteger &other);
-    bool operator>(BigInteger &other);
-    bool operator<(BigInteger &other);
-    bool isNegative();
+    BigInteger() : BigInteger("0"){};// done
+    BigInteger(char digits[]);// done
+    BigInteger operator-(const BigInteger &other); // not done
+    bool operator==(BigInteger &other);// done
+    BigInteger operator=(const BigInteger &other);// not done
+    BigInteger operator+(BigInteger &other); //not done
+    bool operator>=(BigInteger &other); //not done
+    bool operator<=(BigInteger &other); //not done
+    bool operator>(BigInteger &other); //not done
+    bool operator<(BigInteger &other); //not done
+    bool isNegative(); //not done
 };
 #endif
