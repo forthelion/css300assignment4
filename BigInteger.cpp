@@ -47,16 +47,40 @@ BigInteger BigInteger::operator+(BigInteger &other) {
 }; // tempory
 
 bool BigInteger::operator>=(BigInteger &other) {
-    return true;
-}; // tempory;
+    if (*this == other || *this > other) {
+        return true;
+    } else {
+        return false;
+    }
+};
 
 bool BigInteger::operator<=(BigInteger &other) {
     return true;
 }; // tempory;
 
 bool BigInteger::operator>(BigInteger &other) {
-    return true;
-}; // tempory;
+    // A longer number is always going to be bigger,
+    // so check the length first.
+    if (dll.getLength() > other.dll.getLength()) {
+        return true;
+    } else if (dll.getLength() < other.dll.getLength()) {
+        return false;
+    } else {
+        dll.setIteratorFirst();
+        other.dll.setIteratorFirst();
+
+        while (!dll.isIteratorNULL()) {
+            if (dll.getData() > other.dll.getData()) {
+                return true;
+            } else if (dll.getData() < other.dll.getData()) {
+                return false;
+            } else if (dll.getData() == other.dll.getData()) {
+                dll.next();
+                other.dll.next();
+            }
+        }
+    }
+}
 
 bool BigInteger::operator<(BigInteger &other) {
     return true;
