@@ -1,5 +1,5 @@
-#ifndef BIG_INTGERH
-#define BIG_INTGERH
+#ifndef BIG_INTEGER_H
+#define BIG_INTEGER_H
 
 #include "DoublyLinkedList.h"
 #include "Node.h"
@@ -7,15 +7,15 @@
 #include <string>
 using namespace std;
 
-class IllegalArgumentException : public ::exception {
+class IllegalArgumentException : public exception {
   public:
-    char *what() {
+    const char *what() {
         return "IllegalArgumentException";
     }
 };
 class NosuchElementException : public ::exception {
   public:
-    char *what() {
+    const char *what() {
         return "NosuchElementException";
     }
 };
