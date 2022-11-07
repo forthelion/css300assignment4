@@ -126,12 +126,38 @@ template <class T> class DoublyLinkedList {
     }
 
     // deletes the first item from the list
-    void deleteFirst();
+    void deleteFirst() {
+        if (first != nullptr) {
+
+            Node<T> *temp = first->next;
+            delete first;
+            first = temp;
+            if (first == nullptr) {
+                last = nullptr;
+            } else {
+                first->prev = nullptr;
+            }
+            length--;
+        }
+    }
 
     // IGOR
 
     // deletes the last item in the list
-    void deleteLast();
+    void deleteLast() {
+        if (last != nullptr) {
+            Node<T> *temp = last->prev; // theory prev is getting 3 and just
+                                        // reassing it should be 2
+            delete last; // delete not working for last one cant delete 3
+            last = temp;
+            if (last == nullptr) {
+                first = nullptr;
+            } else {
+                last->next = nullptr;
+            }
+            length--;
+        }
+    }
 
     // destroys the list and makes it empty
     void clear() {
@@ -155,24 +181,34 @@ template <class T> class DoublyLinkedList {
     }
 
     // checks if the iterator has next
-    bool hasNext();
+    bool hasNext() {
+        return !isIteratorNULL() && iterator->next != nullptr;
+    }
 
     // checks if the iterator has prev
-    bool hasPrev();
+    bool hasPrev() {
+        return !isIteratorNULL() && iterator->prev != nullptr;
+    }
 
     // sets the iterator to the next node
-    void next();
+    void next() {
+        iterator = iterator->next;
+    }
 
     // sets the iterator to the previous node
-    void prev();
+    void prev() {
+        iterator = iterator->prev;
+    }
 
     // returns true if the iterator is null
     bool isIteratorNULL() {
         return iterator == nullptr;
     }
 
-    // gets the data the iterator is pointing at
-    T getData();
+    // gets the data the iterator pointing at
+    T getData() {
+        return iterator->data;
+    }
 
     // friend functions
     // overloading operator<<
