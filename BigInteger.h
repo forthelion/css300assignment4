@@ -7,26 +7,54 @@
 #include <string>
 using namespace std;
 
+class IllegalArgumentException: public::exception{
+  public:
+    char * what(){
+        return "IllegalArgumentException";
+    }
+};
+class NosuchElementException: public::exception{
+  public:
+    char * what(){
+        return "NosuchElementException";
+    }
+};
+
 class BigInteger {
   protected:
-    Node<int> *first;    // a pointer to the first of the linked list
-    Node<int> *last;     // a pointer to the last node of the linked list
-    Node<int> *iterator; // an internal iterator for the linked list object
-    int length;          // number of items in the linked list
-
+    DoublyLinkedList<int> dll;
   public:
-    BigInteger(const char[]){};
+    
 
-    BigInteger(){};
+    BigInteger(char digits[]){
+        string s(digits);
 
+        // validate all digits before any allocation
+        for (int i = 0; i < s.size(); i++){
+            if (!isdigit(s.at(i))) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        // insert digits on the list
+        for (int i = 0; i < s.size(); i++){
+            int digit = s.at(i) - '0';
+            dll.insertFirst(digit);
+        }
+
+
+    }; 
+
+    
     BigInteger operator-(const BigInteger &other) {
         return *this;
     }; // tempory
-
-    bool operator==(const BigInteger &other) {
-        return true;
+    // yet to be tested 
+    bool operator==(BigInteger &other) {
+       
     }; // tempory
 
+    // copy assignment operator
     BigInteger operator=(const BigInteger &other) {
         return *this;
     }; // tempory
@@ -55,8 +83,6 @@ class BigInteger {
         return true;
     }; // tempory
 
-    int getLength() {
-        return 7;
-    }; // tempory
+
 };
 #endif
