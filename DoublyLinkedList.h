@@ -126,12 +126,40 @@ template <class T> class DoublyLinkedList {
     }
 
     // deletes the first item from the list
-    void deleteFirst();
+    void deleteFirst(){
+        if (first != nullptr) {
+            
+            Node<T>* temp = first->next;
+            delete first;
+            first = temp;
+            if(first == nullptr){
+                last = nullptr;
+            }
+            else {
+                first->prev = nullptr; 
+            }
+            length--;
+        }
+    }
 
     // IGOR
 
     // deletes the last item in the list
-    void deleteLast();
+    void deleteLast(){
+        if (last != nullptr) {
+            Node<T>* temp = last->prev;//theory prev is getting 3 and just reassing it should be 2
+            delete last; // delete not working for last one cant delete 3 
+            last = temp;
+            if(last == nullptr){
+                first = nullptr;
+            }
+            else{
+                last->next = nullptr;
+            }
+            length--;
+        }
+    }
+
 
     // destroys the list and makes it empty
     void clear() {
