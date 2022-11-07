@@ -7,56 +7,37 @@
 #include <string>
 using namespace std;
 
+class IllegalArgumentException : public ::exception {
+  public:
+    char *what() {
+        return "IllegalArgumentException";
+    }
+};
+class NosuchElementException : public ::exception {
+  public:
+    char *what() {
+        return "NosuchElementException";
+    }
+};
+
 class BigInteger {
   protected:
-    Node<int> *first;    // a pointer to the first of the linked list
-    Node<int> *last;     // a pointer to the last node of the linked list
-    Node<int> *iterator; // an internal iterator for the linked list object
-    int length;          // number of items in the linked list
+    DoublyLinkedList<int> dll;
 
   public:
-    BigInteger(const char[]){};
-
-    BigInteger(){};
-
-    BigInteger operator-(const BigInteger &other) {
-        return *this;
-    }; // tempory
-
-    bool operator==(const BigInteger &other) {
-        return true;
-    }; // tempory
-
-    BigInteger operator=(const BigInteger &other) {
-        return *this;
-    }; // tempory
-
-    BigInteger operator+(BigInteger &other) {
-        return *this;
-    }; // tempory
-
-    bool operator>=(BigInteger &other) {
-        return true;
-    }; // tempory;
-
-    bool operator<=(BigInteger &other) {
-        return true;
-    }; // tempory;
-
-    bool operator>(BigInteger &other) {
-        return true;
-    }; // tempory;
-
-    bool operator<(BigInteger &other) {
-        return true;
-    }; // tempory;
-
-    bool isNegative() {
-        return true;
-    }; // tempory
-
-    int getLength() {
-        return 7;
-    }; // tempory
+    // might change in future
+    BigInteger() : BigInteger("0"){};
+    BigInteger(char digits[]);
+    BigInteger operator-(const BigInteger &other);
+    // yet to be tested
+    bool operator==(BigInteger &other);
+    // copy assignment operator
+    BigInteger operator=(const BigInteger &other);
+    BigInteger operator+(BigInteger &other);
+    bool operator>=(BigInteger &other);
+    bool operator<=(BigInteger &other);
+    bool operator>(BigInteger &other);
+    bool operator<(BigInteger &other);
+    bool isNegative();
 };
 #endif
