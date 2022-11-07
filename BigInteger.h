@@ -24,7 +24,8 @@ class BigInteger {
   protected:
     DoublyLinkedList<int> dll;
   public:
-    
+    // might change in future
+    BigInteger() : BigInteger("0") {};
 
     BigInteger(char digits[]){
         string s(digits);
