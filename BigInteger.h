@@ -51,7 +51,22 @@ class BigInteger {
     }; // tempory
     // yet to be tested 
     bool operator==(BigInteger &other) {
-       
+       if (dll.getLength() != other.dll.getLength()) {
+            return false;
+        }
+
+        dll.setIteratorFirst();
+        other.dll.setIteratorFirst();
+        while (!dll.isIteratorNULL()) {
+            if (dll.getData() != other.dll.getData()) {
+                return false;
+            }
+            dll.next();
+            other.dll.next();
+        }
+        return true;
+
+
     }; // tempory
 
     // copy assignment operator
