@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 
 #include "BigInteger.h"
@@ -65,21 +66,25 @@ bool BigInteger::operator>(BigInteger &other) {
         return true;
     } else if (dll.getLength() < other.dll.getLength()) {
         return false;
-    } else {
-        dll.setIteratorFirst();
-        other.dll.setIteratorFirst();
+    }
 
-        while (!dll.isIteratorNULL()) {
-            if (dll.getData() > other.dll.getData()) {
-                return true;
-            } else if (dll.getData() < other.dll.getData()) {
-                return false;
-            } else if (dll.getData() == other.dll.getData()) {
-                dll.next();
-                other.dll.next();
-            }
+    dll.setIteratorFirst();
+    other.dll.setIteratorFirst();
+
+    while (!dll.isIteratorNULL()) {
+        if (dll.getData() > other.dll.getData()) {
+            return true;
+        } else if (dll.getData() < other.dll.getData()) {
+            return false;
+        } else if (dll.getData() == other.dll.getData()) {
+            dll.next();
+            other.dll.next();
         }
     }
+
+    // This should never be reached, but the compiler
+    // complains if it isn't here ¯\_(ツ)_/¯
+    return false;
 }
 
 bool BigInteger::operator<(BigInteger &other) {
