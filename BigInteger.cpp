@@ -1,5 +1,6 @@
 #include "BigInteger.h"
 
+// need to add tolerance for negative number
 BigInteger::BigInteger(char digits[]) {
     string s(digits);
 
@@ -38,9 +39,13 @@ bool BigInteger::operator==(BigInteger &other) {
     return true;
 }
 
-BigInteger BigInteger::operator=(const BigInteger &other) {
-    return *this;
-}; // tempory
+BigInteger BigInteger::operator=(BigInteger &other) {
+    BigInteger newBigInt;
+    newBigInt.dll.clear(); // remove list with zero
+    newBigInt.dll = other.dll; // the operator creates a copy of the list
+    // FIXME: add signal treatment
+    return newBigInt;
+};
 
 BigInteger BigInteger::operator+(BigInteger &other) {
     return *this;
