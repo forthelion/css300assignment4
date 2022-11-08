@@ -6,13 +6,13 @@
 #include <iostream>
 #include <string>
 
-class IllegalArgumentException : public exception {
+class IllegalArgumentException : public std::exception {
   public:
     const char *what() {
         return "IllegalArgumentException";
     }
 };
-class NosuchElementException : public ::exception {
+class NosuchElementException : public std::exception {
   public:
     const char *what() {
         return "NosuchElementException";
@@ -27,7 +27,7 @@ class BigInteger {
   public:
     // might change in future
     BigInteger() : BigInteger("0"){};
-    BigInteger(const string &);
+    BigInteger(const std::string &);
     BigInteger operator-(const BigInteger &other);
     // yet to be tested
     bool operator==(BigInteger &other);

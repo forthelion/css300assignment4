@@ -4,7 +4,6 @@
 #include "Node.h"
 #include <iostream>
 #include <string>
-using namespace std;
 
 template <class T> class DoublyLinkedList {
 
@@ -203,7 +202,7 @@ template <class T> class DoublyLinkedList {
     // friend functions
     // overloading operator<<
     template <class U>
-    friend ostream &operator<<(ostream &out, DoublyLinkedList<U> &list) {
+    friend std::ostream &operator<<(std::ostream &out, DoublyLinkedList<U> &list) {
         list.setIteratorFirst();
         while (!list.isIteratorNULL()) {
             out << list.getData();
@@ -214,7 +213,9 @@ template <class T> class DoublyLinkedList {
 
     // overloading operator>>
     template <class U>
-    friend istream &operator>>(istream &in, DoublyLinkedList<U> &);
+    friend std::istream &operator>>(std::istream &in, DoublyLinkedList<U> &list) {
+        return in;
+    }
 };
 
 #endif

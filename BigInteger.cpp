@@ -3,7 +3,7 @@
 
 #include "BigInteger.h"
 
-BigInteger::BigInteger(const string &s) {
+BigInteger::BigInteger(const std::string &s) {
     // validate all digits before any allocation
     for (int i = 0; i < s.size(); i++) {
         if (!isdigit(s.at(i))) {
@@ -106,7 +106,7 @@ bool BigInteger::isNegative() {
     return negative;
 }; // tempory
 
-std::ostream &operator<<(ostream &out, BigInteger &big) {
+std::ostream &operator<<(std::ostream &out, BigInteger &big) {
     out << big.dll;
     return out;
 }
