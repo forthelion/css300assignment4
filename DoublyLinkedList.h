@@ -16,16 +16,6 @@ template <class T> class DoublyLinkedList {
 
   public:
     // CASSIDY
-
-    void print() {
-        Node<T> *cur = first;
-        while (cur != nullptr) {
-            cout << cur->data << " ";
-            cur = cur->next;
-        }
-        cout << endl;
-    }
-
     // default no-argument constructor
     DoublyLinkedList() {
         init();
