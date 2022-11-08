@@ -27,7 +27,7 @@ class BigInteger {
   public:
     // might change in future
     BigInteger() : BigInteger("0"){};
-    BigInteger(char digits[]);
+    BigInteger(const string &);
     BigInteger operator-(const BigInteger &other);
     // yet to be tested
     bool operator==(BigInteger &other);

@@ -1,8 +1,8 @@
+#include <string>
+
 #include "BigInteger.h"
 
-BigInteger::BigInteger(char digits[]) {
-    string s(digits);
-
+BigInteger::BigInteger(const string &s) {
     // validate all digits before any allocation
     for (int i = 0; i < s.size(); i++) {
         if (!isdigit(s.at(i))) {
