@@ -103,7 +103,7 @@ bool BigInteger::operator<(BigInteger &other) {
 }; // tempory;
 
 bool BigInteger::isNegative() {
-    return true;
+    return negative;
 }; // tempory
 
 std::ostream &operator<<(ostream &out, BigInteger &big) {
