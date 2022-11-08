@@ -20,7 +20,7 @@ class NosuchElementException : public ::exception {
 class BigInteger {
   protected:
     DoublyLinkedList<int> dll;
-
+    bool negative;
   public:
     // might change in future
     BigInteger() : BigInteger("0"){};// done
