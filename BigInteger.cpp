@@ -89,3 +89,8 @@ bool BigInteger::operator<(BigInteger &other) {
 bool BigInteger::isNegative() {
     return true;
 }; // tempory
+
+std::ostream &operator<<(ostream &out, BigInteger &big) {
+    out << big.dll;
+    return out;
+}

@@ -213,7 +213,14 @@ template <class T> class DoublyLinkedList {
     // friend functions
     // overloading operator<<
     template <class U>
-    friend ostream &operator<<(ostream &out, const DoublyLinkedList<U> &);
+    friend ostream &operator<<(ostream &out, DoublyLinkedList<U> &list) {
+        list.setIteratorFirst();
+        while (!list.isIteratorNULL()) {
+            out << list.getData();
+            list.next();
+        }
+        return out;
+    }
 
     // overloading operator>>
     template <class U>

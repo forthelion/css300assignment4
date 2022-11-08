@@ -5,7 +5,6 @@
 #include "Node.h"
 #include <iostream>
 #include <string>
-using namespace std;
 
 class IllegalArgumentException : public exception {
   public:
@@ -39,5 +38,7 @@ class BigInteger {
     bool operator>(BigInteger &other);
     bool operator<(BigInteger &other);
     bool isNegative();
+
+    friend std::ostream &operator<<(std::ostream &output, BigInteger &str);
 };
 #endif
