@@ -27,7 +27,7 @@ class BigInteger {
     BigInteger(char digits[]);// done
     BigInteger operator-(const BigInteger &other); // not done
     bool operator==(BigInteger &other);// done
-    BigInteger operator=(const BigInteger &other);// not done
+    BigInteger operator=(const BigInteger &other);//done
     BigInteger operator+(BigInteger &other); //not done
     bool operator>=(BigInteger &other); //not done
     bool operator<=(BigInteger &other); //not done
