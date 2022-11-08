@@ -13,7 +13,7 @@ BigInteger::BigInteger(const string &s) {
     // insert digits on the list
     for (int i = 0; i < s.size(); i++) {
         int digit = s.at(i) - '0';
-        dll.insertFirst(digit);
+        dll.insertLast(digit);
     }
 }
 
