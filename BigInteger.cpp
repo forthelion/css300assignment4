@@ -56,7 +56,11 @@ bool BigInteger::operator>=(BigInteger &other) {
 };
 
 bool BigInteger::operator<=(BigInteger &other) {
-    return true;
+    if (*this == other || *this < other) {
+        return true;
+    } else {
+        return false;
+    }
 }; // tempory;
 
 bool BigInteger::operator>(BigInteger &other) {
@@ -88,7 +92,14 @@ bool BigInteger::operator>(BigInteger &other) {
 }
 
 bool BigInteger::operator<(BigInteger &other) {
-    return true;
+    // If the numbers are equal, this will incorrectly return
+    // true, because operator> will return false for equal numbers,
+    // and this negates the result of operator>.
+    if (*this == other) {
+        return false;
+    } else {
+        return !(*this > other);
+    }
 }; // tempory;
 
 bool BigInteger::isNegative() {
