@@ -4,7 +4,6 @@
 #include "Node.h"
 #include <iostream>
 #include <string>
-using namespace std;
 
 template <class T> class DoublyLinkedList {
 
@@ -16,16 +15,6 @@ template <class T> class DoublyLinkedList {
 
   public:
     // CASSIDY
-
-    void print() {
-        Node<T> *cur = first;
-        while (cur != nullptr) {
-            cout << cur->data << " ";
-            cur = cur->next;
-        }
-        cout << endl;
-    }
-
     // default no-argument constructor
     DoublyLinkedList() {
         init();
@@ -213,11 +202,20 @@ template <class T> class DoublyLinkedList {
     // friend functions
     // overloading operator<<
     template <class U>
-    friend ostream &operator<<(ostream &out, const DoublyLinkedList<U> &);
+    friend std::ostream &operator<<(std::ostream &out, DoublyLinkedList<U> &list) {
+        list.setIteratorFirst();
+        while (!list.isIteratorNULL()) {
+            out << list.getData();
+            list.next();
+        }
+        return out;
+    }
 
     // overloading operator>>
     template <class U>
-    friend istream &operator>>(istream &in, DoublyLinkedList<U> &);
+    friend std::istream &operator>>(std::istream &in, DoublyLinkedList<U> &list) {
+        return in;
+    }
 };
 
 #endif

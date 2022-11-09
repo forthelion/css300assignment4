@@ -4,13 +4,13 @@
 #include "DoublyLinkedList.h"
 #include "Node.h"
 
-class IllegalArgumentException : public exception {
+class IllegalArgumentException : public std::exception {
   public:
     const char *what() {
         return "IllegalArgumentException";
     }
 };
-class NosuchElementException : public ::exception {
+class NosuchElementException : public std::exception {
   public:
     const char *what() {
         return "NosuchElementException";
@@ -23,16 +23,20 @@ class BigInteger {
     bool negative;
   public:
     // might change in future
-    BigInteger() : BigInteger("0"){};// done
-    BigInteger(char digits[]);// done
-    BigInteger operator-(const BigInteger &other); // not done
-    bool operator==(BigInteger &other);// done
-    BigInteger operator=(const BigInteger &other);//done
-    BigInteger operator+(BigInteger &other); //not done
-    bool operator>=(BigInteger &other); //not done
-    bool operator<=(BigInteger &other); //not done
-    bool operator>(BigInteger &other); //not done
-    bool operator<(BigInteger &other); //not done
-    bool isNegative(); //not done
+    BigInteger() : BigInteger("0"){};
+    BigInteger(const std::string &);
+    BigInteger operator-(const BigInteger &other);
+    // yet to be tested
+    bool operator==(BigInteger &other);
+    // copy assignment operator
+    BigInteger operator=(const BigInteger &other);
+    BigInteger operator+(BigInteger &other);
+    bool operator>=(BigInteger &other);
+    bool operator<=(BigInteger &other);
+    bool operator>(BigInteger &other);
+    bool operator<(BigInteger &other);
+    bool isNegative();
+
+    friend std::ostream &operator<<(std::ostream &output, BigInteger &str);
 };
 #endif
