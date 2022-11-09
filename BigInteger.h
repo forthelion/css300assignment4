@@ -28,6 +28,7 @@ class BigInteger {
     // might change in future
     BigInteger() : BigInteger("0"){};
     BigInteger(const std::string &);
+    int getLength() const;
     BigInteger operator-(const BigInteger &other);
     // yet to be tested
     bool operator==(BigInteger &other);

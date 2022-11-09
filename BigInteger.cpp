@@ -18,6 +18,10 @@ BigInteger::BigInteger(const std::string &s) {
     }
 }
 
+int BigInteger::getLength() const {
+    return dll.getLength();
+}
+
 BigInteger BigInteger::operator-(const BigInteger &other) {
     return *this;
 }
