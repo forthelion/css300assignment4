@@ -114,3 +114,8 @@ std::ostream &operator<<(std::ostream &out, BigInteger &big) {
     out << big.dll;
     return out;
 }
+
+std::istream &operator>>(std::istream &in, BigInteger &big) {
+    in >> big.dll;
+    return in;
+}

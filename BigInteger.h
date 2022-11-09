@@ -41,6 +41,7 @@ class BigInteger {
     bool operator<(BigInteger &other);
     bool isNegative();
 
-    friend std::ostream &operator<<(std::ostream &output, BigInteger &str);
+    friend std::ostream &operator<<(std::ostream &out, BigInteger &str);
+    friend std::istream &operator>>(std::istream &in, BigInteger &str);
 };
 #endif
