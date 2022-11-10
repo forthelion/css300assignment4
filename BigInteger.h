@@ -3,8 +3,6 @@
 
 #include "DoublyLinkedList.h"
 #include "Node.h"
-#include <iostream>
-#include <string>
 
 class IllegalArgumentException : public std::exception {
   public:
@@ -23,13 +21,11 @@ class BigInteger {
   protected:
     DoublyLinkedList<int> dll;
     bool negative;
-
   public:
     // might change in future
     BigInteger() : BigInteger("0"){};
     BigInteger(const std::string &);
-    int getLength() const;
-    BigInteger operator-(const BigInteger &other);
+    BigInteger operator-(BigInteger &other);
     // yet to be tested
     bool operator==(BigInteger &other);
     // copy assignment operator

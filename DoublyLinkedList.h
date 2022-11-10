@@ -54,6 +54,7 @@ template <class T> class DoublyLinkedList {
     void init() {
         first = nullptr;
         last = nullptr;
+        iterator = nullptr;
         length = 0;
     }
 
@@ -156,6 +157,8 @@ template <class T> class DoublyLinkedList {
             first = first->next;
             delete victim;
         }
+
+        init();
     }
 
     // iterator functions

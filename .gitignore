@@ -38,5 +38,7 @@ vgcore.*
 # Visual Studio Code
 *.pdb
 *.ilk
+.vscode/
 
 cassidy.cpp
+igortest.cpp
