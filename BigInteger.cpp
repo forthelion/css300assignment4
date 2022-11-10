@@ -209,6 +209,13 @@ std::ostream &operator<<(std::ostream &out, BigInteger &big) {
 }
 
 std::istream &operator>>(std::istream &in, BigInteger &big) {
-    in >> big.dll;
+    std::string input;
+
+    in >> input;
+
+    BigInteger newBigInt(input);
+
+    big = newBigInt;
+
     return in;
 }
