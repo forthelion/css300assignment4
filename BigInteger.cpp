@@ -21,6 +21,9 @@ BigInteger::BigInteger(const std::string &s) {
 }
 // yet to be tested  need greater then or less 
 BigInteger BigInteger::operator-( BigInteger &other) {
+const int BigInteger::getLength() {
+    return dll.getLength();
+}
     BigInteger newBigInt;
     BigInteger tempbigger;
     BigInteger tempsmall;
