@@ -4,6 +4,8 @@
 #include "BigInteger.h"
 
 BigInteger::BigInteger(const std::string &s) {
+    negative = false;
+
     // validate all digits before any allocation
     for (int i = 0; i < s.size(); i++) {
         if (!isdigit(s.at(i))) {
@@ -18,39 +20,44 @@ BigInteger::BigInteger(const std::string &s) {
     }
 }
 // yet to be tested  need greater then or less 
-BigInteger BigInteger::operator-(const BigInteger &other) {
+BigInteger BigInteger::operator-( BigInteger &other) {
     BigInteger newBigInt;
     BigInteger tempbigger;
     BigInteger tempsmall;
     
-    bool shouldswap;
+    bool shouldswap = false;
     newBigInt.dll.clear(); // remove list with zero
     tempbigger.dll.clear(); // remove list with zero
     tempsmall.dll.clear(); // remove list with zero
+    
     // uncommented this if you want to use the method 
-    //if(*this < other){ // this* is greater then
-      //  shouldswap = true; 
-    //}
-    if(shouldswap){
-        tempbigger = *this;
-        tempsmall = other;
+    if(*this < other){ // this* is greater then
+        shouldswap = true;
+        newBigInt.negative = true; 
     }
-    else{
+
+    if(shouldswap){
         tempbigger = other;
         tempsmall = *this;
     }
+    else{
+        tempbigger = *this;
+        tempsmall = other;
+    }
 
     int bigsizelength = tempbigger.dll.getLength();
-
     int smallsizelength = tempsmall.dll.getLength();
 
 
     // subtraction starts here 
-    int carry = 0; 
+    int carry = 0;
+    
     // loops through all smaller one 
+    tempbigger.dll.setIteratorLast();
+    tempsmall.dll.setIteratorLast();
     for (int i = 0; i < smallsizelength; i++){
         // minus here 
-        int sub = ((tempbigger.dll.getData()-'0')-(tempsmall.dll.getData()-'0'));
+        int sub = tempbigger.dll.getData() - tempsmall.dll.getData() - carry;
         // check if answer is negative  and does the math
         if (sub < 0){
             sub = sub + 10;
@@ -60,24 +67,23 @@ BigInteger BigInteger::operator-(const BigInteger &other) {
         else{
             carry = 0;
         } 
-        newBigInt.dll.insertLast(sub + '0');
+        newBigInt.dll.insertFirst(sub);
+        tempbigger.dll.prev();
+        tempsmall.dll.prev();
     }
 
-    for ( int i = smallsizelength; i < bigsizelength; i++){
-        int sub = ((tempbigger.dll.getData()-'0')-carry);
+    // for ( int i = smallsizelength; i < bigsizelength; i++){
+    //     int sub = ((tempbigger.dll.getData()-'0')-carry);
 
-        if(sub<0){
-            sub = sub + 10;
-            carry = 1;
-        }
-        else{
-            carry = 0;
-        }
-        newBigInt.dll.insertLast(sub + '0');
-    }
-
-
-
+    //     if(sub<0){
+    //         sub = sub + 10;
+    //         carry = 1;
+    //     }
+    //     else{
+    //         carry = 0;
+    //     }
+    //     newBigInt.dll.insertLast(sub + '0');
+    // }
 
     return newBigInt;
 }
@@ -99,14 +105,12 @@ bool BigInteger::operator==(BigInteger &other) {
     return true;
 }
 BigInteger BigInteger::operator=(const BigInteger &other) {
-    BigInteger newBigInt;
-
-    newBigInt.dll.clear(); // remove list with zero
-    newBigInt.dll = other.dll; // the operator creates a copy of the list
-    newBigInt.negative = other.negative;
+    dll.clear(); // remove list with zero
+    dll = other.dll; // the operator creates a copy of the list
+    negative = other.negative;
     
-    return newBigInt;
-};
+    return *this;
+}
 
 BigInteger BigInteger::operator+(BigInteger &other) {
     BigInteger newBigInt;
@@ -114,6 +118,9 @@ BigInteger BigInteger::operator+(BigInteger &other) {
     int bigsizelength = dll.getLength();
 
     int smallsizelength = other.dll.getLength();
+
+    int tempbigger; //temp to get rid of later 
+
 
     int carry = 0;
 
@@ -131,20 +138,7 @@ BigInteger BigInteger::operator+(BigInteger &other) {
         } 
         newBigInt.dll.insertLast(carrycheck + '0');
     }
-
-    for ( int i = smallsizelength; i < bigsizelength; i++){
-        int carrycheck = ((tempbigger.dll.getData()-'0')+carry);
-
-        if (carrycheck > 9){
-            carrycheck = (carrycheck-10);// to make if it 12 it will only push 2 
-            carry = 1;
-        }
-        else{
-            carry = 0;
-        }
-         newBigInt.dll.insertLast(carrycheck + '0');
-    }
-       
+    return newBigInt;
     }; // tempory
 
 bool BigInteger::operator>=(BigInteger &other) {
