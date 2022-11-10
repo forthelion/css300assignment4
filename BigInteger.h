@@ -26,7 +26,6 @@ class BigInteger {
     BigInteger() : BigInteger("0"){};
     BigInteger(const std::string &);
     BigInteger operator-(BigInteger &other);
-    // yet to be tested
     bool operator==(BigInteger &other);
     // copy assignment operator
     BigInteger operator=(const BigInteger &other);
