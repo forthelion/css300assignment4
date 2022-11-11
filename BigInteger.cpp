@@ -4,18 +4,25 @@
 #include "BigInteger.h"
 
 BigInteger::BigInteger(const std::string &s) {
-    negative = false;
+    std::string digits;
+    if (s.at(0) == '-') {
+        negative = true;
+        digits = s.substr(1, s.size() - 1);
+    } else {
+        negative = false;
+        digits = s;
+    }
 
     // validate all digits before any allocation
-    for (int i = 0; i < s.size(); i++) {
-        if (!isdigit(s.at(i))) {
+    for (int i = 0; i < digits.size(); i++) {
+        if (!isdigit(digits.at(i))) {
             throw new IllegalArgumentException();
         }
     }
 
     // insert digits on the list
-    for (int i = 0; i < s.size(); i++) {
-        int digit = s.at(i) - '0';
+    for (int i = 0; i < digits.size(); i++) {
+        int digit = digits.at(i) - '0';
         dll.insertLast(digit);
     }
 }
