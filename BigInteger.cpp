@@ -103,6 +103,11 @@ BigInteger BigInteger::operator-( BigInteger &other) {
 }
 
 bool BigInteger::operator==(BigInteger &other) {
+    if (dll == other.dll) {
+        // it is the same
+        return true;
+    }
+
     if (dll.getLength() != other.dll.getLength()) {
         return false;
     }

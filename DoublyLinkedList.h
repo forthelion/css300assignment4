@@ -202,6 +202,10 @@ template <class T> class DoublyLinkedList {
         return iterator->data;
     }
 
+    bool operator==(DoublyLinkedList<T> &other) {
+        return first == other.first; // lists with same content are not the same object
+    }
+
     // friend functions
     // overloading operator<<
     template <class U>
