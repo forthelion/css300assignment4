@@ -78,8 +78,11 @@ BigInteger BigInteger::operator-(BigInteger &other) {
             carry = 0;
         }
         newBigInt.dll.insertFirst(sub);
-        tempbigger.dll.prev();
-        tempsmall.dll.prev();
+        if(tempsmall.dll.hasPrev()){
+            tempsmall.dll.prev();
+            tempbigger.dll.prev();
+        }
+
     }
 
     for (int i = smallsizelength; i < bigsizelength; i++) {
@@ -93,8 +96,9 @@ BigInteger BigInteger::operator-(BigInteger &other) {
         }
         newBigInt.dll.insertFirst(sub);
     }
-    // checks if the zero in front and it works!!!!
+    // checks if the zero in front 
     newBigInt.dll.setIteratorFirst();
+
     if (newBigInt.dll.getData() == 0) {
         newBigInt.dll.deleteFirst();
     }
@@ -118,8 +122,11 @@ bool BigInteger::operator==(BigInteger &other) {
         if (dll.getData() != other.dll.getData()) {
             return false;
         }
-        dll.next();
-        other.dll.next();
+        if(dll.hasNext()){
+            dll.next();
+            other.dll.next();
+        }
+        
     }
     return true;
 }
@@ -177,8 +184,10 @@ BigInteger BigInteger::operator+(BigInteger &other) {
             carry = 0;
         }
         newBigInt.dll.insertFirst(carrycheck);
-        tempbigger.dll.prev();
-        tempsmall.dll.prev();
+        if(tempsmall.dll.hasPrev()){
+            tempsmall.dll.prev();
+            tempbigger.dll.prev();
+        }
     }
     // check if answer is more then 9
     for (int i = smallsizelength; i < bigsizelength; i++) {
