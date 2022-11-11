@@ -2,6 +2,7 @@
 #include <string>
 
 #include "BigInteger.h"
+#include "IllegalArgumentException.h"
 
 BigInteger::BigInteger(const std::string &s) {
     std::string digits;
@@ -32,7 +33,7 @@ const int BigInteger::getLength() {
 }
 
 // reuse similar idea from operator -
-BigInteger BigInteger::operator-( BigInteger &other) {
+BigInteger BigInteger::operator-(BigInteger &other) {
     BigInteger newBigInt;
     BigInteger tempbigger;
     BigInteger tempsmall;
@@ -40,9 +41,9 @@ BigInteger BigInteger::operator-( BigInteger &other) {
     bool shouldswap = false;
     newBigInt.dll.clear();  // remove list with zero
     tempbigger.dll.clear(); // remove list with zero
-    tempsmall.dll.clear(); // remove list with zero
-    
-    if(*this < other){ // this* is greater then
+    tempsmall.dll.clear();  // remove list with zero
+
+    if (*this < other) { // this* is greater then
         shouldswap = true;
         newBigInt.negative = true;
     }
@@ -81,22 +82,21 @@ BigInteger BigInteger::operator-( BigInteger &other) {
         tempsmall.dll.prev();
     }
 
-    for ( int i = smallsizelength; i < bigsizelength; i++){
-         int sub = (tempbigger.dll.getData()-carry);
+    for (int i = smallsizelength; i < bigsizelength; i++) {
+        int sub = (tempbigger.dll.getData() - carry);
 
-         if(sub<0){
-             sub = sub + 10;
-             carry = 1;
-         }
-         else{
-             carry = 0;
-         }
-         newBigInt.dll.insertFirst(sub);
-     }
+        if (sub < 0) {
+            sub = sub + 10;
+            carry = 1;
+        } else {
+            carry = 0;
+        }
+        newBigInt.dll.insertFirst(sub);
+    }
     // checks if the zero in front and it works!!!!
     newBigInt.dll.setIteratorFirst();
-    if (newBigInt.dll.getData()==0){
-         newBigInt.dll.deleteFirst();
+    if (newBigInt.dll.getData() == 0) {
+        newBigInt.dll.deleteFirst();
     }
 
     return newBigInt;
@@ -134,43 +134,42 @@ BigInteger BigInteger::operator+(BigInteger &other) {
     BigInteger newBigInt;
     BigInteger tempbigger;
     BigInteger tempsmall;
-    
+
     bool shouldswap = false;
-    newBigInt.dll.clear(); // remove list with zero
+    newBigInt.dll.clear();  // remove list with zero
     tempbigger.dll.clear(); // remove list with zero
-    tempsmall.dll.clear(); // remove list with zero
-    
-    if(*this < other){ // this* is greater then
+    tempsmall.dll.clear();  // remove list with zero
+
+    if (*this < other) { // this* is greater then
         shouldswap = true;
-        newBigInt.negative = true; 
+        newBigInt.negative = true;
     }
 
-    if(shouldswap){
+    if (shouldswap) {
         tempbigger = other;
         tempsmall = *this;
-    }
-    else{
+    } else {
         tempbigger = *this;
         tempsmall = other;
     }
-    
 
     int bigsizelength = tempbigger.dll.getLength();
     int smallsizelength = tempsmall.dll.getLength();
 
-
-    // addition starts here 
+    // addition starts here
     int carry = 0;
-    
-    // loops through all smaller one 
+
+    // loops through all smaller one
     tempbigger.dll.setIteratorLast();
     tempsmall.dll.setIteratorLast();
-    for (int i = 0; i < smallsizelength; i++){
-        // add here 
-        int carrycheck = tempbigger.dll.getData() + tempsmall.dll.getData() + carry;
+    for (int i = 0; i < smallsizelength; i++) {
+        // add here
+        int carrycheck =
+            tempbigger.dll.getData() + tempsmall.dll.getData() + carry;
         // check if answer is more then 9
         if (carrycheck > 9) {
-            carrycheck = (carrycheck - 10); // to make if it 12 it will only push 2
+            carrycheck =
+                (carrycheck - 10); // to make if it 12 it will only push 2
             carry = 1;
         }
         // if answers is postive
@@ -180,25 +179,25 @@ BigInteger BigInteger::operator+(BigInteger &other) {
         newBigInt.dll.insertFirst(carrycheck);
         tempbigger.dll.prev();
         tempsmall.dll.prev();
-    } 
-        // check if answer is more then 9
-    for ( int i = smallsizelength; i < bigsizelength; i++){
-        int carrycheck = tempbigger.dll.getData()+carry;
+    }
+    // check if answer is more then 9
+    for (int i = smallsizelength; i < bigsizelength; i++) {
+        int carrycheck = tempbigger.dll.getData() + carry;
 
-        if(carrycheck > 9){
-            carrycheck = (carrycheck-10);// to make if it 12 it will only push 2 
+        if (carrycheck > 9) {
+            carrycheck =
+                (carrycheck - 10); // to make if it 12 it will only push 2
             carry = 1;
-        }
-        else{
+        } else {
             carry = 0;
         }
         newBigInt.dll.insertFirst(carrycheck);
         tempbigger.dll.prev();
     }
-    if(carry==1){
+    if (carry == 1) {
         newBigInt.dll.insertFirst(carry);
     }
-    
+
     return newBigInt;
 }; // tempory
 

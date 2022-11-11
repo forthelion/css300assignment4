@@ -1,7 +1,9 @@
 #ifndef DOUBLY_LINKED_LIST
 #define DOUBLY_LINKED_LIST
 
+#include "NoSuchElementException.h"
 #include "Node.h"
+
 #include <iostream>
 #include <string>
 
@@ -184,12 +186,20 @@ template <class T> class DoublyLinkedList {
 
     // sets the iterator to the next node
     void next() {
-        iterator = iterator->next;
+        if (iterator->next == nullptr) {
+            throw new NoSuchElementException();
+        } else {
+            iterator = iterator->next;
+        }
     }
 
     // sets the iterator to the previous node
     void prev() {
-        iterator = iterator->prev;
+        if (iterator->prev == nullptr) {
+            throw new NoSuchElementException();
+        } else {
+            iterator = iterator->prev;
+        }
     }
 
     // returns true if the iterator is null
