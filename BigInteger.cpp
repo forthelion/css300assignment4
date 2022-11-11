@@ -158,8 +158,7 @@ BigInteger BigInteger::operator+(BigInteger &other) {
         int carrycheck = tempbigger.dll.getData() + tempsmall.dll.getData() + carry;
         // check if answer is more then 9
         if (carrycheck > 9) {
-            carrycheck =
-                (carrycheck - 10); // to make if it 12 it will only push 2
+            carrycheck = (carrycheck - 10); // to make if it 12 it will only push 2
             carry = 1;
         }
         // if answers is postive
