@@ -4,12 +4,6 @@
 #include "DoublyLinkedList.h"
 #include "Node.h"
 
-class IllegalArgumentException : public std::exception {
-  public:
-    const char *what() {
-        return "IllegalArgumentException";
-    }
-};
 class NosuchElementException : public std::exception {
   public:
     const char *what() {
