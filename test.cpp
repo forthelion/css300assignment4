@@ -18,52 +18,52 @@ void grade(bool condition, int points) {
 
 void dllTest() {
     DoublyLinkedList<int> list;
-    grade(list.isEmpty() == true, 1);
+    grade(list.isEmpty() == true, 1);//1
     for (int i = 0; i < 10; i++) {
         list.insertFirst(i);
     }
-    grade(list.getLength() == 10, 2);
+    grade(list.getLength() == 10, 2);//2
 
     list.setIteratorFirst();
-    grade(list.hasPrev() == false, 2);
+    grade(list.hasPrev() == false, 2);//3
 
-    grade(list.getData() == 9, 1);
+    grade(list.getData() == 9, 1);//4
 
     list.next();
-    grade(list.getData() == 8, 2);
+    grade(list.getData() == 8, 2);//5
 
     list.prev();
-    grade(list.getData() == 9, 2);
+    grade(list.getData() == 9, 2);//6
     list.setIteratorLast();
-    grade(list.hasNext() == false, 2);
+    grade(list.hasNext() == false, 2);//7
 
-    grade(list.getData() == 0, 1);
+    grade(list.getData() == 0, 1);//8
 
     list.insertFirst(10);
     list.setIteratorFirst();
-    grade(list.getData() == 10, 1);
+    grade(list.getData() == 10, 1);//9
 
     list.insertLast(40);
     list.setIteratorLast();
-    grade(list.getData() == 40, 1);
+    grade(list.getData() == 40, 1);//10
 
     list.deleteFirst();
     list.setIteratorFirst();
-    grade(list.getData() == 9, 2);
+    grade(list.getData() == 9, 2);//11
 
     list.deleteLast();
     list.setIteratorLast();
-    grade(list.getData() == 0, 2);
+    grade(list.getData() == 0, 2);//12
 
     list.clear();
-    grade(list.getLength() == 0, 1);
+    grade(list.getLength() == 0, 1);//13
 }
 
 void bigIntegerTest() {
     BigInteger int1("19"), int2("300");
     BigInteger actual2 = int1 - int2;
     BigInteger expected2("-281");
-    grade(actual2 == expected2, 3);
+    grade(actual2 == expected2, 3);//14
     grade(actual2.isNegative() == true, 2);
 
     BigInteger bigInt1("55555556666666687888999");

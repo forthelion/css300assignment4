@@ -84,8 +84,13 @@ BigInteger BigInteger::operator-(BigInteger &other) {
         }
 
     }
-
+    
     for (int i = smallsizelength; i < bigsizelength; i++) {
+
+        if (tempbigger.dll.hasPrev()) {
+            tempbigger.dll.prev();
+        }
+
         int sub = (tempbigger.dll.getData() - carry);
 
         if (sub < 0) {
@@ -96,6 +101,8 @@ BigInteger BigInteger::operator-(BigInteger &other) {
         }
         newBigInt.dll.insertFirst(sub);
     }
+
+
     // checks if the zero in front 
     newBigInt.dll.setIteratorFirst();
 
