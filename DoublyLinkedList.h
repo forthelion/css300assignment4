@@ -205,7 +205,8 @@ template <class T> class DoublyLinkedList {
     // friend functions
     // overloading operator<<
     template <class U>
-    friend std::ostream &operator<<(std::ostream &out, DoublyLinkedList<U> &list) {
+    friend std::ostream &operator<<(std::ostream &out,
+                                    DoublyLinkedList<U> &list) {
         list.setIteratorFirst();
         while (!list.isIteratorNULL()) {
             out << list.getData();
@@ -216,7 +217,8 @@ template <class T> class DoublyLinkedList {
 
     // overloading operator>>
     template <class U>
-    friend std::istream &operator>>(std::istream &in, DoublyLinkedList<U> &list) {
+    friend std::istream &operator>>(std::istream &in,
+                                    DoublyLinkedList<U> &list) {
         return in;
     }
 };
