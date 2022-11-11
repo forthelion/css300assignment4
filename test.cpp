@@ -64,35 +64,35 @@ void bigIntegerTest() {
     BigInteger actual2 = int1 - int2;
     BigInteger expected2("-281");
     grade(actual2 == expected2, 3);//14
-    grade(actual2.isNegative() == true, 2);
+    grade(actual2.isNegative() == true, 2);//15
 
     BigInteger bigInt1("55555556666666687888999");
-    grade(bigInt1.getLength() == 23, 2);
+    grade(bigInt1.getLength() == 23, 2);//16
 
     BigInteger bigInt2, bigInt3;
     ifstream file;
     file.open("test.txt");
-    file >> bigInt2 >> bigInt3;
-    grade(bigInt2.getLength() == 23, 2);
-    grade(bigInt3.getLength() == 24, 2);
-
+    file >> bigInt2 >> bigInt3;// heres  glitch
+    grade(bigInt2.getLength() == 23, 2);//17
+    grade(bigInt3.getLength() == 24, 2);//18
+    // bugs here
     BigInteger actual1 = bigInt2 + bigInt3;
     BigInteger expected1("234657681223242153555775");
-    grade(actual1 == expected1, 2);
+    grade(actual1 == expected1, 2);//19
     BigInteger actual3 = bigInt2 - bigInt2;
     BigInteger expected3("0");
-    grade(actual3 == expected3, 2);
+    grade(actual3 == expected3, 2);//20
 
     BigInteger actual4 = bigInt2 - bigInt3;
     BigInteger expected4("-123546567889908777777777");
-    grade(actual4 == expected4, 2);
+    grade(actual4 == expected4, 2);//21
 
-    grade(bigInt2 < bigInt3 == true, 1);
+    grade(bigInt2 < bigInt3 == true, 1);//22
 
-    grade(bigInt3 >= bigInt2 == true, 1);
+    grade(bigInt3 >= bigInt2 == true, 1);//23
 
     BigInteger bigInt4("12345678997654321"), bigInt5("12345678997654321");
-    grade((bigInt4 <= bigInt5 == true), 1);
+    grade((bigInt4 <= bigInt5 == true), 1);//24
 }
 
 int main() {

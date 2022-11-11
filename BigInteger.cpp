@@ -106,7 +106,10 @@ BigInteger BigInteger::operator-(BigInteger &other) {
     // checks if the zero in front 
     newBigInt.dll.setIteratorFirst();
 
-    if (newBigInt.dll.getData() == 0) {
+    while(newBigInt.dll.getData() == 0) {
+        if (newBigInt.dll.getLength() == 1) {
+            break;
+        }
         newBigInt.dll.deleteFirst();
     }
 
@@ -163,7 +166,8 @@ BigInteger BigInteger::operator+(BigInteger &other) {
     if (shouldswap) {
         tempbigger = other;
         tempsmall = *this;
-    } else {
+    } 
+    else {
         tempbigger = *this;
         tempsmall = other;
     }
@@ -178,13 +182,10 @@ BigInteger BigInteger::operator+(BigInteger &other) {
     tempbigger.dll.setIteratorLast();
     tempsmall.dll.setIteratorLast();
     for (int i = 0; i < smallsizelength; i++) {
-        // add here
-        int carrycheck =
-            tempbigger.dll.getData() + tempsmall.dll.getData() + carry;
+        int carrycheck = tempbigger.dll.getData() + tempsmall.dll.getData() + carry;
         // check if answer is more then 9
         if (carrycheck > 9) {
-            carrycheck =
-                (carrycheck - 10); // to make if it 12 it will only push 2
+            carrycheck = (carrycheck - 10); // to make if it 12 it will only push 2
             carry = 1;
         }
         // if answers is postive
@@ -196,20 +197,24 @@ BigInteger BigInteger::operator+(BigInteger &other) {
             tempsmall.dll.prev();
             tempbigger.dll.prev();
         }
+        
+        
     }
+
+
     // check if answer is more then 9
     for (int i = smallsizelength; i < bigsizelength; i++) {
+        if (tempbigger.dll.hasPrev()) {
+            tempbigger.dll.prev();
+        }
         int carrycheck = tempbigger.dll.getData() + carry;
-
         if (carrycheck > 9) {
-            carrycheck =
-                (carrycheck - 10); // to make if it 12 it will only push 2
+            carrycheck = (carrycheck - 10); // to make if it 12 it will only push 2
             carry = 1;
         } else {
             carry = 0;
         }
         newBigInt.dll.insertFirst(carrycheck);
-        tempbigger.dll.prev();
     }
     if (carry == 1) {
         newBigInt.dll.insertFirst(carry);
