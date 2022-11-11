@@ -118,15 +118,16 @@ bool BigInteger::operator==(BigInteger &other) {
 
     dll.setIteratorFirst();
     other.dll.setIteratorFirst();
-    while (!dll.isIteratorNULL()) {
+    while (!dll.isIteratorNULL()) { // check for null in case of length equal zero
         if (dll.getData() != other.dll.getData()) {
             return false;
         }
-        if(dll.hasNext()){
-            dll.next();
-            other.dll.next();
+        if(!dll.hasNext()) {
+            // no more items to compare
+            break;
         }
-        
+        dll.next();
+        other.dll.next();        
     }
     return true;
 }
