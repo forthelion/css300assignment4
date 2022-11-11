@@ -4,13 +4,6 @@
 #include "DoublyLinkedList.h"
 #include "Node.h"
 
-class NosuchElementException : public std::exception {
-  public:
-    const char *what() {
-        return "NosuchElementException";
-    }
-};
-
 class BigInteger {
   protected:
     DoublyLinkedList<int> dll;
